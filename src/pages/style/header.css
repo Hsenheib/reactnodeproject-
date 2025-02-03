@@ -1,0 +1,64 @@
+/* Header.css */
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #007BFF;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo and Project Name container */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px; /* Logo size */
+    height: 50px;
+    margin-right: 10px; /* Space between logo and project name */
+}
+
+.project-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navigation styling */
+.nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav li {
+    margin: 0;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav a:hover {
+    text-decoration: underline; /* Underline effect on hover */
+}
+
+.remove-button {
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .remove-button:hover {
+    background-color: darkred;
+  }
