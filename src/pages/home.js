@@ -5,7 +5,8 @@ import './style/home.css';
 function Home() {
     return(
         <div className="container">
-        <Link to="/logs" className="logs">Logs</Link>
+        <button><Link to="/logs" className="logs">Logs</Link></button>
+        <button><Link to="/RequestShift" className="RequestShift">Request Shift</Link></button> 
         </div>
     );
 }

@@ -1,55 +1,55 @@
-import React from "react";
-import './style/logs.css'; 
+import { useEffect, useState } from "react";
 
-function logs() {
-  return (
-    <div>
-  <h2>Logs</h2>
-  <p><strong>Worker Name:</strong> hsen heeb</p>
-  <p><strong>Worker ID:</strong> 21133748</p>
+const Logs = () => {
+    const [logs, setLogs] = useState([]);
 
-  <h3>Selected Days & Shifts:</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Day</th>
-        <th>Shift</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Sunday:</strong></td>
-        <td>לילה</td>
-      </tr>
-      <tr>
-        <td><strong>Monday:</strong></td>
-        <td>ערב</td>
-      </tr>
-      <tr>
-        <td><strong>Tuesday:</strong></td>
-        <td>ערב</td>
-      </tr>
-      <tr>
-        <td><strong>Wednesday:</strong></td>
-        <td>No shifts selected</td>
-      </tr>
-      <tr>
-        <td><strong>Thursday:</strong></td>
-        <td>לילה</td>
-      </tr>
-      <tr>
-        <td><strong>Friday:</strong></td>
-        <td>No shifts selected</td>
-      </tr>
-      <tr>
-        <td><strong>Saturday:</strong></td>
-        <td>No shifts selected</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    useEffect(() => {
+        // Load logs from localStorage
+        const savedLogs = JSON.parse(localStorage.getItem("logs")) || [];
+        setLogs(savedLogs);
+    }, []);
 
-  );
+    return (
+        <div style={{ maxWidth: "800px", margin: "auto" }}>
+            <h2>Logs</h2>
+            <table border="1" cellPadding="10" cellSpacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {logs.length > 0 ? (
+                        logs.map((log) => (
+                            <tr key={log.id}>
+                                <td>{log.name}</td>
+                                <td>{log.id}</td>
+                                <td>{log.shifts.sunday}</td>
+                                <td>{log.shifts.monday}</td>
+                                <td>{log.shifts.tuesday}</td>
+                                <td>{log.shifts.wednesday}</td>
+                                <td>{log.shifts.thursday}</td>
+                                <td>{log.shifts.friday}</td>
+                                <td>{log.shifts.saturday}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="9" style={{ textAlign: "center" }}>No logs available</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    );
 };
 
-export default logs;
+export default Logs;
